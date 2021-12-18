@@ -22,6 +22,9 @@ https://docs.nestjs.com/security/cors
 ## init new nest app
 > nest new cv-analyzer-nestjs-api
 
+## add mongodb related dependencies
+> npm install --save @nestjs/mongoose mongoose
+
 ## create new module using nestjs cli
 > nest g module projects
 <!-- Using alias: nest g mo Todo -->
