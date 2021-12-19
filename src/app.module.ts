@@ -6,11 +6,13 @@ import config from './config/keys';
 
 import { MongooseModule } from '@nestjs/mongoose';
 import { CompaniesModule } from './modules/companies/companies.module';
+import { JobsModule } from './modules/jobs/jobs.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot(config.mongoURI),
-    CompaniesModule
+    CompaniesModule,
+    JobsModule
   ],
   controllers: [AppController],
   providers: [AppService],
