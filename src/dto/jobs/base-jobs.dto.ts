@@ -1,4 +1,5 @@
 export class BaseJobs {
+    image: string
     companyId: string
     email: string
     position: string

@@ -5,6 +5,10 @@ export type JobsDocument = Jobs & Document;
 
 @Schema()
 export class Jobs {
+
+  @Prop({ required: true })
+  image: string;
+  
   @Prop({ required: true })
   companyId: string;
 

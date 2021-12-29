@@ -1,4 +1,5 @@
 export class BaseCompanies {
+    image: string
     companyName: string
     ownerName: string
     email: string

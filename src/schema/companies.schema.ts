@@ -5,6 +5,10 @@ export type CompaniesDocument = Companies & Document;
 
 @Schema()
 export class Companies {
+
+  @Prop({ required: true })
+  image: string;
+
   @Prop({ required: true })
   companyName: string;
 
