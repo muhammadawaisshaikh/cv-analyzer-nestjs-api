@@ -36,6 +36,9 @@ let JobsController = class JobsController {
     async delete(id) {
         return await this.service.delete(id);
     }
+    async findJobsByCompany(id) {
+        return await this.service.findJobsByCompany(id);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -72,6 +75,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], JobsController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Get)('jobsByCompany/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], JobsController.prototype, "findJobsByCompany", null);
 JobsController = __decorate([
     (0, common_1.Controller)('jobs'),
     __metadata("design:paramtypes", [jobs_service_1.JobsService])

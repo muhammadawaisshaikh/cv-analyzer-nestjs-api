@@ -42,4 +42,10 @@ export class JobsController {
     async delete(@Param('id') id: string) {
         return await this.service.delete(id);
     }
+
+    // Get jobs by companyId 
+    @Get('jobsByCompany/:id')
+    async findJobsByCompany(@Param('id') id: string) {
+        return await this.service.findJobsByCompany(id);
+    }
 }

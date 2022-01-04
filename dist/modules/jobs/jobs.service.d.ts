@@ -10,4 +10,7 @@ export declare class JobsService {
     create(createJobsDto: CreateJobsDto): Promise<Jobs>;
     update(id: string, updateJobsDto: UpdateJobsDto): Promise<Jobs>;
     delete(id: string): Promise<Jobs>;
+    findJobsByCompany(id: string): Promise<(Jobs & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    })[]>;
 }

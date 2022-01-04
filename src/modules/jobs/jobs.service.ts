@@ -8,7 +8,8 @@ import { Jobs, JobsDocument } from 'src/schema/jobs.schema';
 
 @Injectable()
 export class JobsService {
-    constructor(@InjectModel(Jobs.name) private readonly model: Model<JobsDocument>) {
+    constructor(@InjectModel(Jobs.name)
+    private readonly model: Model<JobsDocument>) {
     }
 
     async findAll(): Promise<Jobs[]> {
@@ -32,5 +33,13 @@ export class JobsService {
 
     async delete(id: string): Promise<Jobs> {
         return await this.model.findByIdAndDelete(id).exec();
+    }
+
+    // Get jobs by companyId 
+    async findJobsByCompany(id: string) {
+        let jobs = await this.model.find().exec();
+        let filteredByCompany = jobs.filter(j => j.companyId == id);
+
+        return filteredByCompany;
     }
 }

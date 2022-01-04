@@ -38,6 +38,11 @@ let JobsService = class JobsService {
     async delete(id) {
         return await this.model.findByIdAndDelete(id).exec();
     }
+    async findJobsByCompany(id) {
+        let jobs = await this.model.find().exec();
+        let filteredByCompany = jobs.filter(j => j.companyId == id);
+        return filteredByCompany;
+    }
 };
 JobsService = __decorate([
     (0, common_1.Injectable)(),

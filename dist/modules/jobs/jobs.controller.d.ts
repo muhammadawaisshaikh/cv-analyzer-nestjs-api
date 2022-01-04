@@ -9,4 +9,7 @@ export declare class JobsController {
     create(createProfessionalAboutDto: CreateJobsDto): Promise<import("../../schema/jobs.schema").Jobs>;
     update(id: string, updateProfessionalAboutDto: UpdateJobsDto): Promise<import("../../schema/jobs.schema").Jobs>;
     delete(id: string): Promise<import("../../schema/jobs.schema").Jobs>;
+    findJobsByCompany(id: string): Promise<(import("../../schema/jobs.schema").Jobs & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    })[]>;
 }
