@@ -12,15 +12,19 @@ const mongoose_1 = require("@nestjs/mongoose");
 const jobs_service_1 = require("./jobs.service");
 const jobs_controller_1 = require("./jobs.controller");
 const jobs_schema_1 = require("../../schema/jobs.schema");
+const apply_jobs_service_1 = require("./apply-jobs.service");
+const apply_jobs_controller_1 = require("./apply-jobs.controller");
+const apply_jobs_schema_1 = require("../../schema/apply-jobs.schema");
 let JobsModule = class JobsModule {
 };
 JobsModule = __decorate([
     (0, common_1.Module)({
-        providers: [jobs_service_1.JobsService],
-        controllers: [jobs_controller_1.JobsController],
+        providers: [jobs_service_1.JobsService, apply_jobs_service_1.ApplyJobsService],
+        controllers: [jobs_controller_1.JobsController, apply_jobs_controller_1.ApplyJobsController],
         imports: [
             mongoose_1.MongooseModule.forFeature([
                 { name: jobs_schema_1.Jobs.name, schema: jobs_schema_1.JobsSchema },
+                { name: apply_jobs_schema_1.ApplyJobs.name, schema: apply_jobs_schema_1.ApplyJobsSchema },
             ]),
         ]
     })
