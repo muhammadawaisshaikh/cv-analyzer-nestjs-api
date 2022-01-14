@@ -1,12 +1,13 @@
 import { Document } from 'mongoose';
 export declare type ApplyJobsDocument = ApplyJobs & Document;
 export declare class ApplyJobs {
+    jobId: string;
+    companyId: string;
     firstName: string;
     lastName: string;
     email: string;
     website: string;
     phone: string;
-    position: string;
     resumeURL: string;
     cover: string;
 }

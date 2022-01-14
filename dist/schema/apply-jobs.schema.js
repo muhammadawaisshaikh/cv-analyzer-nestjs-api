@@ -16,6 +16,14 @@ let ApplyJobs = class ApplyJobs {
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
+], ApplyJobs.prototype, "jobId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], ApplyJobs.prototype, "companyId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
 ], ApplyJobs.prototype, "firstName", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
@@ -33,10 +41,6 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], ApplyJobs.prototype, "phone", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], ApplyJobs.prototype, "position", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)

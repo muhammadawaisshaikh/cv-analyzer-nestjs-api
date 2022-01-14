@@ -7,6 +7,12 @@ export type ApplyJobsDocument = ApplyJobs & Document;
 export class ApplyJobs {
 
   @Prop({ required: true })
+  jobId: string;
+
+  @Prop({ required: true })
+  companyId: string;
+
+  @Prop({ required: true })
   firstName: string;
   
   @Prop({ required: true })
@@ -20,9 +26,6 @@ export class ApplyJobs {
 
   @Prop({ required: true })
   phone: string;
-
-  @Prop({ required: true })
-  position: string;
 
   @Prop({ required: true })
   resumeURL: string;
