@@ -14,6 +14,7 @@ const keys_1 = require("./config/keys");
 const mongoose_1 = require("@nestjs/mongoose");
 const companies_module_1 = require("./modules/companies/companies.module");
 const jobs_module_1 = require("./modules/jobs/jobs.module");
+const auth_module_1 = require("./modules/auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -21,7 +22,8 @@ AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot(keys_1.default.mongoURI),
             companies_module_1.CompaniesModule,
-            jobs_module_1.JobsModule
+            jobs_module_1.JobsModule,
+            auth_module_1.AuthModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
