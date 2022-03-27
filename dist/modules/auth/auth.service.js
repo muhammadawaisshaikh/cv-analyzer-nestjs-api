@@ -22,26 +22,35 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-const users_service_1 = require("../users/users.service");
 const jwt_1 = require("@nestjs/jwt");
+const bcrypt = require("bcrypt");
+const users_service_1 = require("../users/users.service");
 let AuthService = class AuthService {
     constructor(usersService, jwtService) {
         this.usersService = usersService;
         this.jwtService = jwtService;
     }
     async validateUser(username, pass) {
-        const user = await this.usersService.findOne(username);
-        if (user && user.password === pass) {
+        const users = await this.usersService.findAll();
+        const user = users.find(user => user.username === username);
+        const isPasswordMatching = await bcrypt.compare(pass, user.password);
+        if (user && isPasswordMatching) {
             const { password } = user, result = __rest(user, ["password"]);
             return result;
         }
         return null;
     }
     async login(user) {
-        const payload = { username: user.username, sub: user.userId };
+        const payload = { username: user.username, password: user.password };
         return {
             access_token: this.jwtService.sign(payload),
         };
+    }
+    async getByEmail(email) {
+        const user = await this.usersService.findOne(email);
+        if (user)
+            return user;
+        throw new common_1.HttpException('User with this email does not exist', common_1.HttpStatus.NOT_FOUND);
     }
 };
 AuthService = __decorate([

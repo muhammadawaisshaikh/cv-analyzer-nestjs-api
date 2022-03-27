@@ -14,12 +14,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
+const app_service_1 = require("./app.service");
 const auth_service_1 = require("./modules/auth/auth.service");
 const jwt_auth_guard_1 = require("./modules/auth/jwt-auth.guard");
 const local_auth_guard_1 = require("./modules/auth/local-auth.guard");
 let AppController = class AppController {
-    constructor(authService) {
+    constructor(authService, appService) {
         this.authService = authService;
+        this.appService = appService;
+    }
+    getHello() {
+        return this.appService.getHello();
     }
     async login(req) {
         return this.authService.login(req.user);
@@ -28,6 +33,12 @@ let AppController = class AppController {
         return req.user;
     }
 };
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getHello", null);
 __decorate([
     (0, common_1.UseGuards)(local_auth_guard_1.LocalAuthGuard),
     (0, common_1.Post)('auth/login'),
@@ -46,7 +57,7 @@ __decorate([
 ], AppController.prototype, "getProfile", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, app_service_1.AppService])
 ], AppController);
 exports.AppController = AppController;
 //# sourceMappingURL=app.controller.js.map
