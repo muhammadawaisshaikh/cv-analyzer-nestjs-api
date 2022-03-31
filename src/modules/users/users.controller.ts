@@ -40,4 +40,10 @@ export class UsersController {
     async delete(@Param('id') id: string) {
         return await this.service.delete(id);
     }
+
+    // Get user by email 
+    @Get('getUserByEmail/:email')
+    async findJobsByCompany(@Param('email') email: string) {
+        return await this.service.getUserByEmail(email);
+    }
 }

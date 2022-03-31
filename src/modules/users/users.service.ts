@@ -23,8 +23,8 @@ export class UsersService {
         return await this.model.find().exec();
     }
 
-    async findOne(email: string): Promise<Users> {
-        return await this.model.findById(email).exec();
+    async findOne(id: string): Promise<Users> {
+        return await this.model.findById(id).exec();
     }
 
     async create(createUsersDto: CreateUsersDto): Promise<any> {
@@ -36,11 +36,12 @@ export class UsersService {
             let request = await new this.model({
                 username: createUsersDto.username,
                 password: hashedPass,
+                role: createUsersDto.role,
                 createdAt: new Date(),
             }).save();
 
             if (request) {
-                const data = { username: request.username, createdAt: new Date() }
+                const data = { username: request.username, role: request.role, createdAt: new Date() }
                 return data;
                 // return "User created successfully."
             } 
@@ -54,5 +55,13 @@ export class UsersService {
 
     async delete(id: string): Promise<Users> {
         return await this.model.findByIdAndDelete(id).exec();
+    }
+
+    // Get user by email 
+    async getUserByEmail(email: string) {
+        let jobs = await this.model.find().exec();
+        let filteredByEmail = jobs.find(j => j.username == email);
+
+        return filteredByEmail;
     }
 }

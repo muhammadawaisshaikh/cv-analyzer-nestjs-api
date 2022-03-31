@@ -36,6 +36,9 @@ let UsersController = class UsersController {
     async delete(id) {
         return await this.service.delete(id);
     }
+    async findJobsByCompany(email) {
+        return await this.service.getUserByEmail(email);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -72,6 +75,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Get)('getUserByEmail/:email'),
+    __param(0, (0, common_1.Param)('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findJobsByCompany", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])
