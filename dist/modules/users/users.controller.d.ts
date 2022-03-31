@@ -9,4 +9,7 @@ export declare class UsersController {
     create(createUsersDto: CreateUsersDto): Promise<any>;
     update(id: string, updateUsersDto: UpdateUsersDto): Promise<import("../../schema/users.schema").Users>;
     delete(id: string): Promise<import("../../schema/users.schema").Users>;
+    findJobsByCompany(email: string): Promise<import("../../schema/users.schema").Users & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
 }

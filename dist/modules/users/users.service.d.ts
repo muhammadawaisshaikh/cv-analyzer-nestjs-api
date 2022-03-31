@@ -8,8 +8,11 @@ export declare class UsersService {
     saltOrRounds: number;
     constructor(model: Model<UsersDocument>);
     findAll(): Promise<Users[]>;
-    findOne(email: string): Promise<Users>;
+    findOne(id: string): Promise<Users>;
     create(createUsersDto: CreateUsersDto): Promise<any>;
     update(id: string, updateUsersDto: UpdateUsersDto): Promise<Users>;
     delete(id: string): Promise<Users>;
+    getUserByEmail(email: string): Promise<Users & import("mongoose").Document<any, any, any> & {
+        _id: any;
+    }>;
 }

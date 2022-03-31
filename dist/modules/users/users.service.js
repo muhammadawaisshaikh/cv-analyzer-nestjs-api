@@ -28,8 +28,8 @@ let UsersService = class UsersService {
     async findAll() {
         return await this.model.find().exec();
     }
-    async findOne(email) {
-        return await this.model.findById(email).exec();
+    async findOne(id) {
+        return await this.model.findById(id).exec();
     }
     async create(createUsersDto) {
         const users = await this.model.find().exec();
@@ -39,10 +39,11 @@ let UsersService = class UsersService {
             let request = await new this.model({
                 username: createUsersDto.username,
                 password: hashedPass,
+                role: createUsersDto.role,
                 createdAt: new Date(),
             }).save();
             if (request) {
-                const data = { username: request.username, createdAt: new Date() };
+                const data = { username: request.username, role: request.role, createdAt: new Date() };
                 return data;
             }
         }
@@ -53,6 +54,11 @@ let UsersService = class UsersService {
     }
     async delete(id) {
         return await this.model.findByIdAndDelete(id).exec();
+    }
+    async getUserByEmail(email) {
+        let jobs = await this.model.find().exec();
+        let filteredByEmail = jobs.find(j => j.username == email);
+        return filteredByEmail;
     }
 };
 UsersService = __decorate([
